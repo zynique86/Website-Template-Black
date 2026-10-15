@@ -16,25 +16,79 @@
 
   <main>
     <!-- ============ Hero ============ -->
-    <section class="hero">
-      <div class="hero-word" aria-hidden="true">ÉLAN</div>
-      <div class="container hero-inner">
-        <span class="eyebrow eyebrow-center rise">2026 秋冬 · 臻藏系列</span>
-        <div class="hero-stage rise r1">
-          <div class="stage-item s-far" data-bottle="jar,#3f4a35,#151a12"></div>
-          <div class="stage-item s-mid" data-bottle="round,#f1e6cf,#b8a37c"></div>
-          <div class="stage-item s-hero" data-bottle="tall,#e2b06a,#6e4114"></div>
-          <div class="stage-item s-mid" data-bottle="square,#4a3a2c,#14100c"></div>
-          <div class="stage-item s-far" data-bottle="tall,#e7a7a1,#8c3f45"></div>
-          <div class="stage-floor"></div>
-        </div>
-        <h1 class="rise r2">气韵天成<span class="dot">·</span><em>一香倾城</em></h1>
-        <p class="rise r3">源自法国格拉斯的百年调香工艺，以珍稀原料与东方灵感，为你调制一缕专属的气质与记忆。</p>
-        <div class="hero-cta rise r4">
-          <a href="collection.html" class="btn btn-primary">探索全系列 <span class="arrow">→</span></a>
-          <a href="spotlight.html" class="btn btn-ghost">限量主推</a>
+    <section class="hero hero-slider" aria-roledescription="carousel" aria-label="本季精选">
+      <!-- 轮播：每张幻灯片的 .slide-bg 可以换成真实大图或视频，
+           例如 style="background-image:url(assets/hero-1.jpg)"，或在里面放 <video autoplay muted loop playsinline> -->
+      <div class="slides">
+
+        <article class="slide is-active" data-label="臻藏系列">
+          <div class="slide-bg bg-collection" aria-hidden="true"><div class="hero-word">ÉLAN</div></div>
+          <div class="container slide-inner center">
+            <span class="eyebrow eyebrow-center">2026 秋冬 · 臻藏系列</span>
+            <div class="hero-stage">
+              <div class="stage-item s-far" data-bottle="jar,#3f4a35,#151a12"></div>
+              <div class="stage-item s-mid" data-bottle="round,#f1e6cf,#b8a37c"></div>
+              <div class="stage-item s-hero" data-bottle="tall,#e2b06a,#6e4114"></div>
+              <div class="stage-item s-mid" data-bottle="square,#4a3a2c,#14100c"></div>
+              <div class="stage-item s-far" data-bottle="tall,#e7a7a1,#8c3f45"></div>
+              <div class="stage-floor"></div>
+            </div>
+            <h1>气韵天成<span class="dot">·</span><em>一香倾城</em></h1>
+            <p>源自法国格拉斯的百年调香工艺，以珍稀原料与东方灵感，为你调制一缕专属的气质与记忆。</p>
+            <div class="hero-cta">
+              <a href="collection.html" class="btn btn-primary">探索全系列 <span class="arrow">→</span></a>
+              <a href="craft.html" class="btn btn-ghost">品牌故事</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="slide" data-label="限量 · 墨玉沉香">
+          <div class="slide-bg bg-oud" aria-hidden="true"><i class="smoke s1"></i><i class="smoke s2"></i><i class="smoke s3"></i></div>
+          <div class="container slide-inner split-slide">
+            <div class="slide-copy">
+              <span class="eyebrow">Limited Edition · 全球限量 2,026 瓶</span>
+              <h2 class="slide-title">墨玉<em>沉香</em></h2>
+              <p>三十年老树天然沉香，交织意大利皮革与古老焚香。每一瓶都由调香师亲笔签名编号。</p>
+              <div class="slide-price">¥2,380 <small>/ 100ml</small></div>
+              <div class="hero-cta">
+                <a href="spotlight.html" class="btn btn-primary">立即预约 <span class="arrow">→</span></a>
+                <button class="btn btn-ghost" data-add="oud">加入购物袋</button>
+              </div>
+            </div>
+            <div class="slide-visual"><div class="slide-bottle" data-bottle="square,#4a3a2c,#100c09"></div></div>
+          </div>
+        </article>
+
+        <article class="slide" data-label="居家香薰">
+          <div class="slide-bg bg-candle" aria-hidden="true"></div>
+          <div class="container slide-inner split-slide reverse">
+            <div class="slide-copy">
+              <span class="eyebrow">Home Fragrance · 居家香薰</span>
+              <h2 class="slide-title">一室<em>暖意</em></h2>
+              <p>天然大豆蜡与棉芯，燃烧约 55 小时。松针、旧书页与无花果，把季节的气味带回家。</p>
+              <div class="slide-price">¥620 <small>起</small></div>
+              <div class="hero-cta">
+                <a href="collection.html?cat=home" class="btn btn-primary">选购香薰蜡烛 <span class="arrow">→</span></a>
+                <a href="product.html?id=bois" class="btn btn-ghost">松林篝火</a>
+              </div>
+            </div>
+            <div class="slide-visual candles">
+              <div class="candle c-side"><span class="flame"></span><div data-bottle="candle,#6b4a2a,#24170c"></div></div>
+              <div class="candle c-main"><span class="flame"></span><div data-bottle="candle,#2c2a26,#0f0e0c"></div></div>
+              <div class="candle c-side"><span class="flame"></span><div data-bottle="candle,#3f4a35,#151a12"></div></div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="container slider-ui">
+        <div class="slider-tabs" role="tablist"></div>
+        <div class="slider-arrows">
+          <button class="arrow-btn" data-dir="-1" aria-label="上一张">←</button>
+          <button class="arrow-btn" data-dir="1" aria-label="下一张">→</button>
         </div>
       </div>
+
       <div class="container hero-bar rise r4">
         <div><strong>1926</strong><span>始于法国格拉斯</span></div>
         <div><strong>28</strong><span>全球珍稀原料产区</span></div>
@@ -78,7 +132,7 @@
     </section>
 
     <!-- ============ 工艺 ============ -->
-    <section class="craft" id="craft">
+    <section class="craft light" id="craft">
       <div class="container craft-grid">
         <div class="craft-visual reveal">
           <div data-bottle="square,#5a4430,#16110c"></div>

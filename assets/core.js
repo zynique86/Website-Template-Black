@@ -69,6 +69,14 @@ function bottle(shape, c1, c2, label = "ÉLAN") {
       <rect x="36" y="88" width="128" height="194" rx="3" fill="none" stroke="#fff" stroke-opacity=".22"/>
       <rect x="46" y="96" width="14" height="178" fill="url(#${id}s)"/>
       ${lbl(172, 80)}`,
+    candle: `
+      <rect x="32" y="108" width="136" height="182" rx="10" fill="url(#${id}l)"/>
+      <ellipse cx="100" cy="112" rx="66" ry="11" fill="#efe3cb"/>
+      <ellipse cx="100" cy="112" rx="66" ry="11" fill="none" stroke="#fff" stroke-opacity=".35"/>
+      <rect x="98.5" y="94" width="3" height="18" rx="1.5" fill="#2a2018"/>
+      <rect x="32" y="108" width="136" height="182" rx="10" fill="none" stroke="#fff" stroke-opacity=".2"/>
+      <rect x="46" y="128" width="14" height="148" rx="7" fill="url(#${id}s)"/>
+      ${lbl(190, 84)}`,
     jar: `
       <rect x="26" y="70" width="148" height="34" rx="6" fill="url(#${id}g)"/>
       <rect x="32" y="104" width="136" height="186" rx="10" fill="url(#${id}l)"/>
