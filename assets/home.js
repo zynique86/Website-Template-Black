@@ -20,8 +20,8 @@ document.querySelectorAll(".filter").forEach((btn) => {
   if (!root) return;
   const slides = [...root.querySelectorAll(".slide")];
   const tabs = root.querySelector(".slider-tabs");
-  const DUR = 6000;
-  let i = 0, timer = null, paused = false;
+  const DUR = 4000;
+  let i = 0, timer = null;
   root.style.setProperty("--dur", DUR / 1000 + "s");
   tabs.innerHTML = slides.map((s, k) => `<button class="slider-tab" role="tab" aria-label="第 ${k + 1} 张：${s.dataset.label}"><i></i><b>0${k + 1}</b>${s.dataset.label}</button>`).join("");
   const tabEls = [...tabs.children];
@@ -35,13 +35,10 @@ document.querySelectorAll(".filter").forEach((btn) => {
     });
     schedule();
   }
-  function schedule() { clearTimeout(timer); if (!paused) timer = setTimeout(() => go(i + 1), DUR); }
-  function setPaused(p) { paused = p; root.classList.toggle("paused", p); if (!p) go(i); else clearTimeout(timer); }
+  function schedule() { clearTimeout(timer); timer = setTimeout(() => go(i + 1), DUR); }
 
   tabEls.forEach((t, k) => t.addEventListener("click", () => go(k)));
   root.querySelectorAll(".arrow-btn").forEach((b) => b.addEventListener("click", () => go(i + +b.dataset.dir)));
-  root.querySelector(".slides").addEventListener("mouseenter", () => setPaused(true));
-  root.querySelector(".slides").addEventListener("mouseleave", () => setPaused(false));
   let x0 = null;
   root.addEventListener("touchstart", (e) => { x0 = e.touches[0].clientX; }, { passive: true });
   root.addEventListener("touchend", (e) => {
@@ -50,6 +47,5 @@ document.querySelectorAll(".filter").forEach((btn) => {
     if (Math.abs(dx) > 50) go(i + (dx < 0 ? 1 : -1));
     x0 = null;
   });
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) paused = true;
   go(0);
 })();

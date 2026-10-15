@@ -741,7 +741,6 @@ mark { background: none; color: var(--gold-light); border-bottom: 1px solid var(
 .slider-tab i { position: absolute; top: 0; left: 0; height: 1px; width: 0; background: var(--gold-light); }
 .slider-tab.on { color: var(--ivory); }
 .slider-tab.on i { animation: progress var(--dur, 6s) linear forwards; }
-.hero-slider.paused .slider-tab.on i { animation-play-state: paused; }
 @keyframes progress { to { width: 100%; } }
 .slider-arrows { display: flex; gap: 10px; }
 .arrow-btn { width: 50px; height: 50px; border: 1px solid var(--line); color: var(--gold-light); font-size: 18px; transition: all 0.3s; }
