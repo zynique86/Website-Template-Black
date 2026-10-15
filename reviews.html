@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>客户口碑 · ÉLAN 逸岚</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="面包屑"><a href="index.html">首页</a><span>/</span>客户口碑</nav>
+        <span class="eyebrow eyebrow-center">Testimonials</span>
+        <h1 class="section-title">他们<em>这样说</em></h1>
+        <p class="section-lead">来自全球 120 万会员的真实评价。</p>
+        <div class="divider-gem" aria-hidden="true"><span></span></div>
+      </div>
+    </section>
+    <section class="tight">
+      <div class="container">
+        <div class="rating-summary reveal">
+          <div class="big-score"><b>4.9</b><div class="stars" style="font-size:16px;margin:10px 0 6px">★★★★★</div><span>基于 9,042 条评价</span></div>
+          <div class="bars" id="bars"></div>
+        </div>
+        <div class="toolbar" style="margin-top:60px">
+          <div class="filters" id="revFilters">
+            <button class="filter active" data-filter="all">全部</button>
+            <button class="filter" data-filter="fragrance">香水</button>
+            <button class="filter" data-filter="home">香薰蜡烛</button>
+            <button class="filter" data-filter="care">身体护理</button>
+            <button class="filter" data-filter="gift">礼盒套装</button>
+          </div>
+          <select class="select" id="revSort" aria-label="排序"><option value="new">最新发布</option><option value="helpful">最有帮助</option></select>
+        </div>
+        <div class="reviews-list" id="list"></div>
+      </div>
+    </section>
+
+    <section style="padding-top:0">
+      <div class="container">
+        <div class="divider-ornate" aria-hidden="true"><svg><use href="#flourish"/></svg></div>
+        <div style="text-align:center"><span class="eyebrow eyebrow-center">Share Yours</span><h2 class="section-title">写下你的<em>评价</em></h2></div>
+        <form class="review-form" id="reviewForm">
+          <div class="field"><label for="rvName">你的称呼</label><input class="input" id="rvName" required placeholder="例如：王小姐" /></div>
+          <div class="field"><label for="rvCity">城市与身份</label><input class="input" id="rvCity" placeholder="例如：深圳 · 设计师" /></div>
+          <div class="field"><label for="rvProduct">评价商品</label><select class="select" id="rvProduct" style="padding:14px 40px 14px 16px"></select></div>
+          <div class="field"><label>评分</label><div class="star-input" id="stars"></div></div>
+          <div class="field full"><label for="rvText">评价内容</label><textarea class="textarea" id="rvText" required placeholder="分享你的使用感受"></textarea></div>
+          <div class="full"><button class="btn btn-primary" type="submit">提交评价</button></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/core.js"></script>
+  <script>
+    const REVIEWS = [
+      { n: "林小姐", c: "上海 · 品牌设计师", p: "ambre", r: 5, d: "2026-10-08", h: 128, t: "琥珀夜曲是我用过最有层次感的香水，从清晨到夜晚，每个阶段都有不同的惊喜。" },
+      { n: "陈先生", c: "北京 · 企业主", p: "giftset", r: 5, d: "2026-10-05", h: 96, t: "包装的仪式感太强了，打开盒子的那一刻就知道是用心之作。送礼再合适不过。" },
+      { n: "周女士", c: "杭州 · 生活方式博主", p: "bois", r: 5, d: "2026-10-02", h: 210, t: "松林篝火蜡烛让整个客厅都有了温度，朋友来家里都会问是什么味道。" },
+      { n: "许先生", c: "成都 · 建筑师", p: "oud", r: 5, d: "2026-09-28", h: 74, t: "沉香的品质非常正，不是那种刺鼻的合成木香。限量编号也很有收藏感。" },
+      { n: "唐小姐", c: "广州 · 律师", p: "the", r: 4, d: "2026-09-21", h: 52, t: "白茶晨雾很适合上班用，干净不打扰人。留香再久一点就完美了。" },
+      { n: "赵女士", c: "南京 · 大学教师", p: "iris", r: 5, d: "2026-09-18", h: 41, t: "身体乳质地很细腻，吸收快，鸢尾的粉感香气淡淡的很高级。" },
+      { n: "吴小姐", c: "苏州 · 插画师", p: "rose", r: 5, d: "2026-09-12", h: 88, t: "玫瑰庭院一点都不甜腻，荔枝让玫瑰变得很灵动，春夏秋都能用。" },
+      { n: "郑先生", c: "深圳 · 产品经理", p: "vetiver", r: 5, d: "2026-09-03", h: 63, t: "终于找到一支适合通勤的男香，岩兰草很冷静，同事说闻起来很可靠。" },
+      { n: "孙女士", c: "厦门 · 花艺师", p: "figue", r: 4, d: "2026-08-27", h: 37, t: "无花果的绿意很真实，夏天点着很清爽。希望出个大号的。" },
+    ].map((x, i) => ({ ...x, id: i, on: false }));
+    // 评分分布
+    const dist = [[5, 86], [4, 10], [3, 3], [2, 1], [1, 0]];
+    document.getElementById("bars").innerHTML = dist.map(([s, pct]) => `<div class="bar"><span>${s} 星</span><div class="track"><i style="width:${pct}%"></i></div><span>${pct}%</span></div>`).join("");
+
+    let cat = "all", sort = "new";
+    const list = document.getElementById("list");
+    function render() {
+      let items = REVIEWS.filter((r) => cat === "all" || findProduct(r.p).cat === cat);
+      items = [...items].sort((a, b) => sort === "helpful" ? b.h - a.h : b.d.localeCompare(a.d));
+      list.innerHTML = items.length ? items.map((r) => `
+        <blockquote class="quote reveal">
+          <div class="meta"><span class="stars">${"★".repeat(r.r)}${"☆".repeat(5 - r.r)}</span><span>${r.d}</span></div>
+          <a class="product-tag" href="product.html?id=${r.p}">${findProduct(r.p).name}</a>
+          <p>${esc(r.t)}</p>
+          <footer><div class="avatar">${esc(r.n[0])}</div><div><strong>${esc(r.n)}</strong><span>${esc(r.c)}</span></div></footer>
+          <div class="meta" style="margin-top:4px"><span class="verified">✓ 已购买</span><button class="helpful${r.on ? " on" : ""}" data-help="${r.id}">有帮助 · ${r.h}</button></div>
+        </blockquote>`).join("") : `<div class="empty" style="grid-column:1/-1"><h3>这个分类还没有评价</h3><p>成为第一个分享感受的人吧。</p></div>`;
+      document.querySelectorAll("#revFilters .filter").forEach((b) => b.classList.toggle("active", b.dataset.filter === cat));
+      observeReveal(list);
+    }
+    document.getElementById("revFilters").addEventListener("click", (e) => { const b = e.target.closest(".filter"); if (b) { cat = b.dataset.filter; render(); } });
+    document.getElementById("revSort").addEventListener("change", (e) => { sort = e.target.value; render(); });
+    list.addEventListener("click", (e) => {
+      const b = e.target.closest("[data-help]"); if (!b) return;
+      const r = REVIEWS[+b.dataset.help]; r.on = !r.on; r.h += r.on ? 1 : -1; render();
+    });
+
+    // 写评价
+    let rating = 5;
+    const stars = document.getElementById("stars");
+    const drawStars = () => { stars.innerHTML = [1, 2, 3, 4, 5].map((i) => `<button type="button" data-star="${i}" class="${i <= rating ? "on" : ""}" aria-label="${i} 星">★</button>`).join(""); };
+    stars.addEventListener("click", (e) => { const b = e.target.closest("[data-star]"); if (b) { rating = +b.dataset.star; drawStars(); } });
+    drawStars();
+    document.getElementById("rvProduct").innerHTML = PRODUCTS.map((p) => `<option value="${p.id}">${p.name}</option>`).join("");
+    document.getElementById("reviewForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const today = new Date().toISOString().slice(0, 10);
+      REVIEWS.unshift({ id: REVIEWS.length, n: rvName.value.trim(), c: rvCity.value.trim() || "逸岚会员", p: rvProduct.value, r: rating, d: today, h: 0, t: rvText.value.trim(), on: false });
+      REVIEWS.forEach((r, i) => (r.id = i));
+      cat = "all"; sort = "new"; document.getElementById("revSort").value = "new";
+      e.target.reset(); rating = 5; drawStars(); render();
+      showToast("感谢你的评价，已发布在列表顶部");
+      list.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+    render();
+  </script>
+</body>
+</html>

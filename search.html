@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>搜索 · ÉLAN 逸岚</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="面包屑"><a href="index.html">首页</a><span>/</span>搜索</nav>
+        <span class="eyebrow eyebrow-center">Search</span>
+        <h1 class="section-title">寻找你的<em>专属香气</em></h1>
+        
+        <div class="divider-gem" aria-hidden="true"><span></span></div>
+      </div>
+    </section>
+    <section class="tight" style="padding-top:20px">
+      <div class="container">
+        <form class="search-box" id="searchForm" role="search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input id="q" type="search" autocomplete="off" placeholder="输入香调、商品名或分类" aria-label="搜索" />
+          <button type="button" id="clear">清除</button>
+        </form>
+        <div class="hot">
+          <span>热门搜索</span>
+          <button class="chip" data-q="玫瑰">玫瑰</button><button class="chip" data-q="沉香">沉香</button><button class="chip" data-q="琥珀">琥珀</button>
+          <button class="chip" data-q="蜡烛">蜡烛</button><button class="chip" data-q="礼盒">礼盒</button><button class="chip" data-q="麝香">麝香</button>
+        </div>
+        <div class="toolbar" style="margin-top:60px"><span class="count" id="count"></span></div>
+        <div class="products" id="grid"></div>
+        <div class="empty" id="empty" hidden><h3>没有找到相关商品</h3><p>换个关键词试试，比如“玫瑰”“木质”或“蜡烛”。</p><a href="collection.html" class="btn btn-ghost">浏览全部系列</a></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/core.js"></script>
+  <script>
+    const input = document.getElementById("q"), grid = document.getElementById("grid"), empty = document.getElementById("empty"), count = document.getElementById("count");
+    const hay = (p) => [p.name, p.en, p.desc, p.catLabel, p.tag || "", ...p.notes, p.story].join(" ").toLowerCase();
+    const hl = (text, q) => q ? esc(text).replace(new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi"), (m) => `<mark>${m}</mark>`) : esc(text);
+    function run() {
+      const q = input.value.trim();
+      const terms = q.toLowerCase().split(/\s+/).filter(Boolean);
+      const list = terms.length ? PRODUCTS.filter((p) => terms.every((t) => hay(p).includes(t))) : PRODUCTS;
+      grid.innerHTML = list.map(productCard).join("");
+      if (q) grid.querySelectorAll(".product").forEach((card, i) => {
+        card.querySelector("h3 a").innerHTML = hl(list[i].name, q);
+        card.querySelector(".desc").innerHTML = hl(list[i].desc, q);
+      });
+      empty.hidden = list.length > 0;
+      count.textContent = q ? `“${q}” 共找到 ${list.length} 款商品` : `全部商品 · ${list.length} 款`;
+      try { sessionStorage.setItem("elan-q", q); } catch {}
+      observeReveal(grid);
+    }
+    input.addEventListener("input", run);
+    document.getElementById("searchForm").addEventListener("submit", (e) => { e.preventDefault(); run(); });
+    document.getElementById("clear").onclick = () => { input.value = ""; run(); input.focus(); };
+    document.querySelectorAll("[data-q]").forEach((c) => c.onclick = () => { input.value = c.dataset.q; run(); });
+    let start = qs("q");
+    if (start === null) { try { start = sessionStorage.getItem("elan-q"); } catch {} }
+    input.value = start || "";
+    run();
+    input.focus();
+  </script>
+</body>
+</html>

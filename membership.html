@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>会员礼遇 · ÉLAN 逸岚</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="面包屑"><a href="index.html">首页</a><span>/</span>会员礼遇</nav>
+        <span class="eyebrow eyebrow-center">Join The Circle</span>
+        <h1 class="section-title">逸岚<em>会员礼遇</em></h1>
+        <p class="section-lead">三个等级，消费即可自动升级。注册即送首单 9 折与旅行装小样。</p>
+        <div class="divider-gem" aria-hidden="true"><span></span></div>
+      </div>
+    </section>
+    <section class="tight light">
+      <div class="container">
+        <div class="tiers">
+          <div class="tier-card reveal">
+            <div class="card-face silver"><span>ÉLAN</span><small>MEMBER · 逸岚卡</small></div>
+            <h3>逸岚卡</h3><div class="req">注册即享</div>
+            <ul><li>首单 9 折</li><li>生日月赠送 15ml 香水</li><li>每消费 ¥1 积 1 分</li><li>新品资讯优先推送</li></ul>
+          </div>
+          <div class="tier-card featured reveal d1">
+            <span class="ribbon">最受欢迎</span>
+            <div class="card-face gold"><span>ÉLAN</span><small>GOLD · 金卡</small></div>
+            <h3>金卡</h3><div class="req">年消费满 ¥5,000</div>
+            <ul><li>全年 95 折</li><li>积分 1.5 倍</li><li>新品提前 7 天试香</li><li>免费刻字与专属礼盒</li><li>专属客服顾问</li></ul>
+          </div>
+          <div class="tier-card reveal d2">
+            <div class="card-face black"><span>ÉLAN</span><small>NOIR · 黑金卡</small></div>
+            <h3>黑金卡</h3><div class="req">年消费满 ¥20,000</div>
+            <ul><li>全年 9 折</li><li>积分 2 倍</li><li>限量款优先购买权</li><li>一对一定制香水体验</li><li>格拉斯工坊年度之旅抽选</li></ul>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table class="compare">
+            <thead><tr><th>权益对比</th><th>逸岚卡</th><th>金卡</th><th>黑金卡</th></tr></thead>
+            <tbody>
+              <tr><td>购物折扣</td><td>首单 9 折</td><td>95 折</td><td>9 折</td></tr>
+              <tr><td>积分倍率</td><td>1 倍</td><td>1.5 倍</td><td>2 倍</td></tr>
+              <tr><td>生日礼</td><td>15ml 香水</td><td>50ml 香水</td><td>定制礼盒</td></tr>
+              <tr><td>新品试香</td><td>—</td><td class="yes">提前 7 天</td><td class="yes">提前 14 天</td></tr>
+              <tr><td>限量款优先购</td><td>—</td><td>—</td><td class="yes">✓</td></tr>
+              <tr><td>定制香水体验</td><td>—</td><td>—</td><td class="yes">✓</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="join">
+      <div class="container">
+        <span class="eyebrow eyebrow-center">Become A Member</span>
+        <h2 class="section-title">立即<em>加入</em></h2>
+        <div class="divider-gem" aria-hidden="true"><span></span></div>
+        <p class="section-lead" style="margin:0 auto">填写信息即可开通逸岚卡，首单优惠码将发送到你的邮箱。</p>
+        <form class="signup" id="signup">
+          <div class="field"><label for="mName">姓名</label><input class="input" id="mName" required placeholder="你的称呼" /></div>
+          <div class="field"><label for="mBirth">生日</label><input class="input" id="mBirth" type="date" /></div>
+          <div class="field full"><label for="mEmail">邮箱</label><input class="input" id="mEmail" type="email" required placeholder="name@example.com" /></div>
+          <div class="full"><button class="btn btn-primary" type="submit" style="width:100%;justify-content:center">开通会员</button></div>
+        </form>
+        <div class="form-note" id="joinNote" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section style="padding-top:0">
+      <div class="container">
+        <div class="divider-ornate" aria-hidden="true"><svg><use href="#flourish"/></svg></div>
+        <div style="text-align:center"><span class="eyebrow eyebrow-center">FAQ</span><h2 class="section-title">常见<em>问题</em></h2></div>
+        <div class="faq">
+          <details><summary>会员等级如何升级？</summary><p>自然年内累计消费达到对应门槛后，系统会在 24 小时内自动升级，有效期至次年年底。</p></details>
+          <details><summary>积分可以做什么？</summary><p>积分可在结算时抵扣（100 分抵 ¥1），也可兑换小样、蜡烛与限定周边。</p></details>
+          <details><summary>生日礼什么时候发放？</summary><p>生日当月 1 日发放至账户，当月内下单即可随单寄出。</p></details>
+          <details><summary>线下门店可以使用会员权益吗？</summary><p>可以。全国门店与线上商城会员权益通用，出示会员码即可。</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/core.js"></script>
+  <script>
+    document.getElementById("signup").addEventListener("submit", (e) => {
+      e.preventDefault();
+      document.getElementById("joinNote").textContent = `欢迎加入，${mName.value.trim()}！首单优惠码 ELAN10 已发送至 ${mEmail.value.trim()}，也可以直接在购物袋中使用。`;
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>

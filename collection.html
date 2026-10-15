@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>臻选系列 · ÉLAN 逸岚</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="面包屑"><a href="index.html">首页</a><span>/</span>臻选系列</nav>
+        <span class="eyebrow eyebrow-center">The Collection</span>
+        <h1 class="section-title">臻选<em>系列</em></h1>
+        <p class="section-lead">香水、香薰蜡烛、身体护理与礼盒，每一款都经过超过 300 次调配试验。</p>
+        <div class="divider-gem" aria-hidden="true"><span></span></div>
+      </div>
+    </section>
+    <section class="tight">
+      <div class="container">
+        <div class="toolbar">
+          <div class="filters" id="catFilters">
+            <button class="filter active" data-filter="all">全部</button>
+            <button class="filter" data-filter="fragrance">香水</button>
+            <button class="filter" data-filter="home">香薰蜡烛</button>
+            <button class="filter" data-filter="care">身体护理</button>
+            <button class="filter" data-filter="gift">礼盒套装</button>
+          </div>
+          <div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
+            <span class="count" id="count"></span>
+            <select class="select" id="sort" aria-label="排序">
+              <option value="default">推荐排序</option>
+              <option value="price-asc">价格从低到高</option>
+              <option value="price-desc">价格从高到低</option>
+              <option value="rating">评分最高</option>
+            </select>
+          </div>
+        </div>
+        <div class="products" id="grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/core.js"></script>
+  <script>
+    let cat = CATS[qs("cat")] ? qs("cat") : "all", sort = "default";
+    const grid = document.getElementById("grid");
+    function render() {
+      let list = PRODUCTS.filter((p) => cat === "all" || p.cat === cat);
+      if (sort === "price-asc") list = [...list].sort((a, b) => a.price - b.price);
+      if (sort === "price-desc") list = [...list].sort((a, b) => b.price - a.price);
+      if (sort === "rating") list = [...list].sort((a, b) => b.rating - a.rating);
+      grid.innerHTML = list.map(productCard).join("");
+      document.getElementById("count").textContent = `共 ${list.length} 款`;
+      document.querySelectorAll("#catFilters .filter").forEach((b) => b.classList.toggle("active", b.dataset.filter === cat));
+      observeReveal(grid);
+    }
+    document.getElementById("catFilters").addEventListener("click", (e) => {
+      const b = e.target.closest(".filter"); if (!b) return;
+      cat = b.dataset.filter; render();
+    });
+    document.getElementById("sort").addEventListener("change", (e) => { sort = e.target.value; render(); });
+    render();
+  </script>
+</body>
+</html>

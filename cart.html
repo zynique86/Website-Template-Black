@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>购物袋 · ÉLAN 逸岚</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="面包屑"><a href="index.html">首页</a><span>/</span>购物袋</nav>
+        <span class="eyebrow eyebrow-center">Shopping Bag</span>
+        <h1 class="section-title">我的<em>购物袋</em></h1>
+        
+        <div class="divider-gem" aria-hidden="true"><span></span></div>
+      </div>
+    </section>
+    <section class="tight">
+      <div class="container" id="cartRoot"></div>
+    </section>
+    <section style="padding-top:0">
+      <div class="container">
+        <div class="divider-ornate" aria-hidden="true"><svg><use href="#flourish"/></svg></div>
+        <div class="section-head" style="margin-bottom:50px"><div><span class="eyebrow">Recommended</span><h2 class="section-title">搭配<em>推荐</em></h2></div></div>
+        <div class="products" id="recs"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/core.js"></script>
+  <script>
+    const FREE = 1000, SHIP = 30;
+    const COUPONS = { ELAN10: { label: "会员 9 折", rate: 0.1 }, WELCOME: { label: "新客立减 ¥100", off: 100 } };
+    let coupon = null, wrap = true, done = null;
+    const root = document.getElementById("cartRoot");
+
+    function render() {
+      if (done) {
+        root.innerHTML = `<div class="order-done"><span class="eyebrow eyebrow-center">Order Placed</span><h2>感谢你的订购</h2><p>我们已收到你的订单，调香师签名编号将随包裹一同寄出。</p><div class="no">订单号 ${done}</div><a href="collection.html" class="btn btn-primary">继续选购 <span class="arrow">→</span></a></div>`;
+        return;
+      }
+      const items = Cart.read().map((x) => ({ ...x, p: findProduct(x.id) })).filter((x) => x.p);
+      if (!items.length) {
+        root.innerHTML = `<div class="empty"><h3>购物袋还是空的</h3><p>去看看本季新品，或者从热卖款开始。</p><a href="collection.html" class="btn btn-primary">探索臻选系列 <span class="arrow">→</span></a></div>`;
+        return;
+      }
+      const subtotal = items.reduce((s, x) => s + x.p.price * x.qty, 0);
+      const discount = coupon ? Math.round(coupon.rate ? subtotal * coupon.rate : coupon.off) : 0;
+      const after = subtotal - discount;
+      const ship = after >= FREE ? 0 : SHIP;
+      const left = Math.max(0, FREE - after);
+      root.innerHTML = `
+        <div class="cart-layout">
+          <div>
+            <div class="free-ship">${left ? `再选购 <b>${fmt(left)}</b> 即可享受顺丰包邮` : "已满 ¥1,000，<b>本单顺丰包邮</b>"}
+              <div class="stock-bar"><i style="width:${Math.min(100, (after / FREE) * 100)}%"></i></div></div>
+            ${items.map(({ p, qty }) => `
+              <div class="cart-item">
+                <a class="cart-thumb" href="product.html?id=${p.id}" style="--glow:${p.c1}33">${bottle(p.shape, p.c1, p.c2)}</a>
+                <div>
+                  <h3><a href="product.html?id=${p.id}">${p.name}</a></h3>
+                  <div class="sub">${p.catLabel} · ${p.size} · ${fmt(p.price)}</div>
+                  <div class="controls">
+                    <div class="qty"><button data-dec="${p.id}" aria-label="减少">−</button><span>${qty}</span><button data-inc="${p.id}" aria-label="增加">+</button></div>
+                    <button class="link-btn" data-remove="${p.id}">移除</button>
+                  </div>
+                </div>
+                <div class="line-total">${fmt(p.price * qty)}</div>
+              </div>`).join("")}
+          </div>
+          <aside class="summary">
+            <h2>订单摘要</h2>
+            <div class="sum-row"><span>商品小计（${Cart.count()} 件）</span><span>${fmt(subtotal)}</span></div>
+            ${discount ? `<div class="sum-row"><span>优惠（${coupon.label}）</span><span>−${fmt(discount)}</span></div>` : ""}
+            <div class="sum-row"><span>运费</span><span>${ship ? fmt(ship) : "免运费"}</span></div>
+            <div class="sum-row total"><span>应付总额</span><b>${fmt(after + ship)}</b></div>
+            <form class="coupon" id="couponForm"><input id="couponInput" placeholder="优惠码，试试 ELAN10" aria-label="优惠码" value="${coupon ? coupon.code : ""}" /><button>使用</button></form>
+            <div class="coupon-note" id="couponNote">${coupon ? `已使用「${coupon.label}」` : ""}</div>
+            <label class="check"><input type="checkbox" id="wrap" ${wrap ? "checked" : ""} /> 免费礼盒包装与手写贺卡</label>
+            <button class="btn btn-primary" id="checkout">去结算 <span class="arrow">→</span></button>
+            <ul class="assure"><li>支持微信支付、支付宝与银联</li><li>每瓶附调香师签名编号</li><li>未拆封商品 30 天无忧退换</li></ul>
+          </aside>
+        </div>`;
+    }
+
+    root.addEventListener("click", (e) => {
+      const t = e.target.closest("button"); if (!t) return;
+      const item = (id) => Cart.read().find((x) => x.id === id);
+      if (t.dataset.inc) Cart.set(t.dataset.inc, Math.min(9, item(t.dataset.inc).qty + 1));
+      if (t.dataset.dec) Cart.set(t.dataset.dec, item(t.dataset.dec).qty - 1);
+      if (t.dataset.remove) { Cart.remove(t.dataset.remove); showToast("已从购物袋移除"); }
+      if (t.id === "checkout") { done = "EL" + Date.now().toString().slice(-8); Cart.write([]); window.scrollTo({ top: 0, behavior: "smooth" }); render(); }
+    });
+    root.addEventListener("submit", (e) => {
+      if (e.target.id !== "couponForm") return;
+      e.preventDefault();
+      const code = document.getElementById("couponInput").value.trim().toUpperCase();
+      if (COUPONS[code]) { coupon = { ...COUPONS[code], code }; render(); showToast("优惠码已使用"); }
+      else document.getElementById("couponNote").textContent = code ? "这个优惠码无效，请检查后重试" : "请输入优惠码";
+    });
+    root.addEventListener("change", (e) => { if (e.target.id === "wrap") wrap = e.target.checked; });
+    document.addEventListener("cart:change", render);
+    render();
+    document.getElementById("recs").innerHTML = PRODUCTS.filter((p) => ["giftset", "bois", "rose", "iris"].includes(p.id)).map(productCard).join("");
+  </script>
+</body>
+</html>

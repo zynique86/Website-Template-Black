@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ÉLAN 逸岚 · 高级香氛</title>
+  <meta name="description" content="ÉLAN 逸岚：源自格拉斯的高级香氛与居家香薰。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main>
+    <!-- ============ Hero ============ -->
+    <section class="hero hero-slider" aria-roledescription="carousel" aria-label="本季精选">
+      <!-- 轮播：每张幻灯片的 .slide-bg 可以换成真实大图或视频，
+           例如 style="background-image:url(assets/hero-1.jpg)"，或在里面放 <video autoplay muted loop playsinline> -->
+      <div class="slides">
+
+        <article class="slide is-active" data-label="臻藏系列">
+          <div class="slide-bg bg-collection" aria-hidden="true"><div class="hero-word">ÉLAN</div></div>
+          <div class="container slide-inner center">
+            <span class="eyebrow eyebrow-center">2026 秋冬 · 臻藏系列</span>
+            <div class="hero-stage">
+              <div class="stage-item s-far" data-bottle="jar,#3f4a35,#151a12"></div>
+              <div class="stage-item s-mid" data-bottle="round,#f1e6cf,#b8a37c"></div>
+              <div class="stage-item s-hero" data-bottle="tall,#e2b06a,#6e4114"></div>
+              <div class="stage-item s-mid" data-bottle="square,#4a3a2c,#14100c"></div>
+              <div class="stage-item s-far" data-bottle="tall,#e7a7a1,#8c3f45"></div>
+              <div class="stage-floor"></div>
+            </div>
+            <h1>气韵天成<span class="dot">·</span><em>一香倾城</em></h1>
+            <p>源自法国格拉斯的百年调香工艺，以珍稀原料与东方灵感，为你调制一缕专属的气质与记忆。</p>
+            <div class="hero-cta">
+              <a href="collection.html" class="btn btn-primary">探索全系列 <span class="arrow">→</span></a>
+              <a href="craft.html" class="btn btn-ghost">品牌故事</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="slide" data-label="限量 · 墨玉沉香">
+          <div class="slide-bg bg-oud" aria-hidden="true"><i class="smoke s1"></i><i class="smoke s2"></i><i class="smoke s3"></i></div>
+          <div class="container slide-inner split-slide">
+            <div class="slide-copy">
+              <span class="eyebrow">Limited Edition · 全球限量 2,026 瓶</span>
+              <h2 class="slide-title">墨玉<em>沉香</em></h2>
+              <p>三十年老树天然沉香，交织意大利皮革与古老焚香。每一瓶都由调香师亲笔签名编号。</p>
+              <div class="slide-price">¥2,380 <small>/ 100ml</small></div>
+              <div class="hero-cta">
+                <a href="spotlight.html" class="btn btn-primary">立即预约 <span class="arrow">→</span></a>
+                <button class="btn btn-ghost" data-add="oud">加入购物袋</button>
+              </div>
+            </div>
+            <div class="slide-visual"><div class="slide-bottle" data-bottle="square,#4a3a2c,#100c09"></div></div>
+          </div>
+        </article>
+
+        <article class="slide" data-label="臻藏礼盒">
+          <div class="slide-bg bg-gift" aria-hidden="true"></div>
+          <div class="container slide-inner split-slide reverse">
+            <div class="slide-copy">
+              <span class="eyebrow">Gift Collection · 送礼之选</span>
+              <h2 class="slide-title">臻藏<em>礼盒</em></h2>
+              <p>四款经典香水 15ml 随行装，配手写贺卡与丝带包装。一次收藏逸岚的四种气韵。</p>
+              <div class="slide-price">¥1,880 <small><s>¥2,160</s></small></div>
+              <div class="hero-cta">
+                <a href="product.html?id=giftset" class="btn btn-primary">查看礼盒 <span class="arrow">→</span></a>
+                <button class="btn btn-ghost" data-add="giftset">加入购物袋</button>
+              </div>
+            </div>
+            <div class="slide-visual">
+              <div class="gift-box">
+                <div data-bottle="tall,#d9a35b,#7a4a17"></div>
+                <div data-bottle="round,#f1e6cf,#b8a37c"></div>
+                <div data-bottle="tall,#e7a7a1,#8c3f45"></div>
+                <div data-bottle="square,#4a3a2c,#14100c"></div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="container slider-ui">
+        <div class="slider-tabs" role="tablist"></div>
+        <div class="slider-arrows">
+          <button class="arrow-btn" data-dir="-1" aria-label="上一张">←</button>
+          <button class="arrow-btn" data-dir="1" aria-label="下一张">→</button>
+        </div>
+      </div>
+
+      <div class="container hero-bar rise r4">
+        <div><strong>1926</strong><span>始于法国格拉斯</span></div>
+        <div><strong>28</strong><span>全球珍稀原料产区</span></div>
+        <div><strong>12H+</strong><span>持久留香</span></div>
+        <div><strong>500</strong><span>每批次限量瓶数</span></div>
+      </div>
+    </section>
+
+    <!-- ============ 滚动品牌条 ============ -->
+    <div class="honors">
+      <div class="container">
+        <p class="honors-title">荣誉与认可</p>
+        <ul class="honors-grid">
+          <li><svg class="laurel"><use href="#laurel"/></svg><div><small>2025</small><strong>国际香水大奖</strong><span>年度奢华香氛 · 金奖</span></div><svg class="laurel flip"><use href="#laurel"/></svg></li>
+          <li><svg class="laurel"><use href="#laurel"/></svg><div><small>2025</small><strong>时尚编辑之选</strong><span>秋冬最佳女士香水</span></div><svg class="laurel flip"><use href="#laurel"/></svg></li>
+          <li><svg class="laurel"><use href="#laurel"/></svg><div><small>2024</small><strong>国际设计大奖</strong><span>香水瓶身设计 · 银奖</span></div><svg class="laurel flip"><use href="#laurel"/></svg></li>
+          <li><svg class="laurel"><use href="#laurel"/></svg><div><small>2024</small><strong>绿色包装认证</strong><span>可回收水晶玻璃瓶</span></div><svg class="laurel flip"><use href="#laurel"/></svg></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ============ 产品 ============ -->
+    <section id="collection">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow reveal">The Collection</span>
+            <h2 class="section-title reveal d1">臻选<em>系列</em></h2>
+            <p class="section-lead reveal d2">每一款都经过超过 300 次调配试验，只为找到那一刻恰到好处的平衡。</p>
+          </div>
+          <div class="filters reveal d2">
+            <button class="filter active" data-filter="all">全部</button>
+            <button class="filter" data-filter="fragrance">香水</button>
+            <button class="filter" data-filter="home">香薰蜡烛</button>
+            <button class="filter" data-filter="care">身体护理</button>
+          </div>
+        </div>
+        <div class="products" id="productGrid"></div>
+        <div class="more-link"><a href="collection.html" class="btn btn-ghost">查看全部 12 款 <span class="arrow">→</span></a></div>
+      </div>
+    </section>
+
+    <!-- ============ 工艺 ============ -->
+    <section class="craft light" id="craft">
+      <div class="container craft-grid">
+        <div class="craft-visual reveal">
+          <div data-bottle="square,#5a4430,#16110c"></div>
+          <div class="year"><b>1926</b>始于格拉斯</div>
+        </div>
+        <div>
+          <span class="eyebrow reveal">Our Craft</span>
+          <h2 class="section-title reveal d1">百年匠心，<br/><em>一滴</em>成香</h2>
+          <p class="section-lead reveal d2">我们坚持手工萃取与小批量生产，每一瓶都由调香师亲自签名编号，确保你收到的是独一无二的作品。</p>
+          <div class="features">
+            <div class="feature reveal"><div class="num">01</div><h4>珍稀原料</h4><p>甄选全球 28 个产区的天然花材与木质香料。</p></div>
+            <div class="feature reveal d1"><div class="num">02</div><h4>手工调配</h4><p>大师级调香师主理，每批次不超过 500 瓶。</p></div>
+            <div class="feature reveal d2"><div class="num">03</div><h4>持久留香</h4><p>高浓度香精配比，留香时间可达 12 小时以上。</p></div>
+            <div class="feature reveal d3"><div class="num">04</div><h4>可持续包装</h4><p>可回收水晶玻璃瓶身，支持终身补充装服务。</p></div>
+          </div>
+          <a href="craft.html" class="btn btn-ghost" style="margin-top:44px">了解品牌故事 <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 数据 ============ -->
+    <div class="stats">
+      <div class="container stats-grid">
+        <div class="stat"><strong data-count="98">98</strong><span>年品牌传承</span></div>
+        <div class="stat"><strong data-count="120" data-suffix="万+">120万+</strong><span>全球会员</span></div>
+        <div class="stat"><strong data-count="36">36</strong><span>国家与地区</span></div>
+        <div class="stat"><strong data-count="99" data-suffix="%">99%</strong><span>好评率</span></div>
+      </div>
+    </div>
+
+    <!-- ============ 主推 ============ -->
+    <section id="spotlight">
+      <div class="container">
+        <div class="spotlight-card reveal">
+          <div class="spotlight-copy">
+            <span class="eyebrow">Limited Edition</span>
+            <h2 class="section-title">墨玉<em>沉香</em></h2>
+            <p class="section-lead">取自三十年老树的天然沉香，与意大利皮革和古老焚香交织，沉稳而深邃。全球限量 2026 瓶。</p>
+            <ul class="spotlight-list">
+              <li>前调：粉红胡椒、藏红花</li>
+              <li>中调：沉香木、保加利亚玫瑰</li>
+              <li>后调：皮革、焚香、琥珀</li>
+            </ul>
+            <div class="divider-gem left" aria-hidden="true"><span></span></div>
+            <div class="price">¥2,380</div>
+            <div class="hero-cta">
+              <button class="btn btn-primary" data-add="oud">立即购买 <span class="arrow">→</span></button>
+              <a href="spotlight.html" class="btn btn-ghost">了解详情</a>
+            </div>
+          </div>
+          <div class="spotlight-visual" data-bottle="square,#4a3a2c,#100c09"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 评价 ============ -->
+    <section id="reviews" style="padding-top: 0">
+      <div class="container">
+        <div class="divider-ornate reveal" aria-hidden="true"><svg><use href="#flourish"/></svg></div>
+        <div class="section-head">
+          <div>
+            <span class="eyebrow reveal">Testimonials</span>
+            <h2 class="section-title reveal d1">他们<em>这样说</em></h2>
+          </div>
+        </div>
+        <div class="testimonials-grid">
+          <blockquote class="quote reveal">
+            <div class="stars">★★★★★</div>
+            <p>琥珀夜曲是我用过最有层次感的香水，从清晨到夜晚，每个阶段都有不同的惊喜。</p>
+            <footer><div class="avatar">林</div><div><strong>林小姐</strong><span>上海 · 品牌设计师</span></div></footer>
+          </blockquote>
+          <blockquote class="quote reveal d1">
+            <div class="stars">★★★★★</div>
+            <p>包装的仪式感太强了，打开盒子的那一刻就知道是用心之作。送礼再合适不过。</p>
+            <footer><div class="avatar">陈</div><div><strong>陈先生</strong><span>北京 · 企业主</span></div></footer>
+          </blockquote>
+          <blockquote class="quote reveal d2">
+            <div class="stars">★★★★★</div>
+            <p>松林篝火蜡烛让整个客厅都有了温度，朋友来家里都会问是什么味道。</p>
+            <footer><div class="avatar">周</div><div><strong>周女士</strong><span>杭州 · 生活方式博主</span></div></footer>
+          </blockquote>
+        </div>
+        <div class="more-link"><a href="reviews.html" class="btn btn-ghost">查看全部评价 <span class="arrow">→</span></a></div>
+      </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section class="cta" id="contact">
+      <div class="container">
+        <span class="eyebrow reveal">Join The Circle</span>
+        <h2 class="section-title reveal d1">成为<em>逸岚会员</em></h2>
+        <div class="divider-gem reveal d1" aria-hidden="true"><span></span></div>
+        <p class="section-lead reveal d2">订阅即享首单 9 折、新品优先试香与会员专属活动邀请。</p>
+        <form class="subscribe reveal d3">
+          <input type="email" required placeholder="输入你的邮箱地址" aria-label="邮箱地址" />
+          <button class="btn btn-primary" type="submit">立即订阅</button>
+        </form>
+        <div class="form-note" aria-live="polite"></div>
+        <a href="membership.html" class="text-link">查看全部会员权益 →</a>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/core.js"></script>
+  <script src="assets/home.js"></script>
+</body>
+</html>
