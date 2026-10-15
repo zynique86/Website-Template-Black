@@ -146,6 +146,25 @@ document.querySelector(".menu-toggle").addEventListener("click", (e) => {
 });
 links.addEventListener("click", (e) => { if (e.target.tagName === "A") links.classList.remove("open"); });
 
+/* ---------- 导航跳转：内容居中落在导航栏下方 ---------- */
+function scrollToSection(id) {
+  const section = document.getElementById(id);
+  if (!section) return;
+  const navH = nav.getBoundingClientRect().height;
+  const content = section.querySelector(".container") || section;
+  const r = content.getBoundingClientRect();
+  const avail = window.innerHeight - navH;
+  const offset = r.height < avail - 48 ? (avail - r.height) / 2 : 32;
+  window.scrollTo({ top: window.scrollY + r.top - navH - offset, behavior: "smooth" });
+}
+document.addEventListener("click", (e) => {
+  const a = e.target.closest('a[href^="#"]');
+  if (!a || a.getAttribute("href").length < 2) return;
+  e.preventDefault();
+  links.classList.remove("open");
+  scrollToSection(a.getAttribute("href").slice(1));
+});
+
 /* ---------- 滚动渐显 & 数字滚动 ---------- */
 const io = new IntersectionObserver((entries) => {
   entries.forEach((en) => {

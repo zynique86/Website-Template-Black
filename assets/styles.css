@@ -212,7 +212,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .honors-grid span { display: block; font-size: 12px; letter-spacing: 0.1em; color: var(--muted); }
 
 /* ---------- 通用 section ---------- */
-section { padding: 140px 0; }
+section { padding: 140px 0; scroll-margin-top: 100px; }
 .section-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; margin-bottom: 70px; flex-wrap: wrap; }
 
 /* ---------- 产品 ---------- */
