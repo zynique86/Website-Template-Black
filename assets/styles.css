@@ -339,24 +339,25 @@ section { padding: 88px 0; scroll-margin-top: 100px; }
 .form-note { margin-top: 18px; font-size: 13px; color: var(--gold-light); min-height: 20px; }
 
 /* ---------- 服务保障 ---------- */
-.perks { padding: 24px 0 48px; }
-.perks-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
-.perk { display: flex; gap: 16px; align-items: flex-start; }
-.perk svg { width: 30px; flex-shrink: 0; color: var(--gold); }
-.perk strong { display: block; font-weight: 500; font-size: 15px; letter-spacing: 0.06em; }
-.perk span { font-size: 13px; color: var(--muted); }
+.perks { padding: 8px 0 0; }
+.perks-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(201, 169, 110, 0.22); border-bottom: 1px solid rgba(201, 169, 110, 0.22); }
+.perk { display: flex; gap: 14px; align-items: center; justify-content: center; padding: 22px 12px; }
+.perk + .perk { border-left: 1px solid var(--line); }
+.perk svg { width: 24px; flex-shrink: 0; color: var(--gold); }
+.perk strong { display: block; font-weight: 500; font-size: 14px; letter-spacing: 0.06em; }
+.perk span { font-size: 12px; color: var(--muted); }
 
-/* ---------- Footer ---------- */
-.footer { padding: 24px 0 40px; }
-.footer-grid { display: grid; grid-template-columns: 1.6fr repeat(3, 1fr); gap: 60px; }
-.footer p { color: var(--muted); font-size: 14px; margin-top: 20px; max-width: 300px; }
-.footer h5 { font-size: 12px; letter-spacing: 0.3em; color: var(--gold); font-weight: 500; margin-bottom: 22px; }
-.footer ul { list-style: none; display: grid; gap: 12px; font-size: 14px; color: #bdb7ab; }
+.footer { padding: 48px 0 28px; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr repeat(3, 1fr); gap: 40px; }
+.footer p { color: var(--muted); font-size: 13px; margin-top: 14px; max-width: 300px; }
+.footer h5 { font-size: 12px; letter-spacing: 0.3em; color: var(--gold); font-weight: 500; margin-bottom: 14px; }
+.footer ul { list-style: none; display: grid; gap: 8px; font-size: 13px; color: #bdb7ab; }
 .footer ul a:hover { color: var(--gold-light); }
-.socials { display: flex; gap: 12px; margin-top: 28px; }
-.socials a { width: 40px; height: 40px; border: 1px solid var(--line); display: grid; place-items: center; font-size: 12px; color: var(--muted); transition: all 0.3s; }
-.socials a:hover { border-color: var(--gold); color: var(--gold-light); }
-.footer-bottom { margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; font-size: 12px; color: #6d685f; letter-spacing: 0.1em; flex-wrap: wrap; gap: 12px; }
+.socials { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 18px; font-size: 12px; letter-spacing: 0.12em; }
+.socials a { color: var(--muted); transition: color 0.3s; }
+.socials a + a::before { content: "·"; margin-right: 18px; color: var(--gold-deep); }
+.socials a:hover { color: var(--gold-light); }
+.footer-bottom { margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; font-size: 12px; color: #6d685f; letter-spacing: 0.1em; flex-wrap: wrap; gap: 12px; }
 
 /* ---------- Toast ---------- */
 .toast {
@@ -385,6 +386,8 @@ section { padding: 88px 0; scroll-margin-top: 100px; }
   .craft-grid { gap: 60px; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .perks-grid { grid-template-columns: repeat(2, 1fr); }
+  .perk:nth-child(3) { border-left: 0; }
+  .perk:nth-child(n+3) { border-top: 1px solid var(--line); }
 }
 
 @media (max-width: 860px) {
@@ -419,8 +422,10 @@ section { padding: 88px 0; scroll-margin-top: 100px; }
   .logo small { display: none; }
   .products { grid-template-columns: 1fr; }
   .features { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr; gap: 40px; }
-  .perks-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px 20px; }
+  .footer-grid > div:first-child, .footer-grid > div:last-child { grid-column: 1 / -1; }
+  .perk { justify-content: flex-start; gap: 10px; padding: 16px 10px; }
+  .perk svg { width: 20px; }
   .subscribe { flex-direction: column; }
   .subscribe input { padding: 18px 20px; }
   .subscribe .btn { justify-content: center; }

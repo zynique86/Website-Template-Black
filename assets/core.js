@@ -190,13 +190,12 @@ function renderFooter() {
   </div>
   <footer class="footer">
     <div class="container">
-      <div class="divider-ornate" aria-hidden="true"><svg><use href="#flourish"/></svg></div>
       <div class="footer-grid">
         <div>
           <a href="index.html" class="logo">ÉL<span>A</span>N<small>逸岚</small></a>
           <p>源自格拉斯的高级香氛品牌，以气味记录生活中每一个值得珍藏的瞬间。</p>
           <div class="socials">
-            <a href="#" aria-label="微信">微</a><a href="#" aria-label="微博">博</a><a href="#" aria-label="小红书">红</a><a href="#" aria-label="抖音">抖</a>
+            <a href="#">微信</a><a href="#">微博</a><a href="#">小红书</a><a href="#">抖音</a>
           </div>
         </div>
         <div><h5>选购</h5><ul>${Object.entries(CATS).map(([k, v]) => `<li><a href="collection.html?cat=${k}">${v}</a></li>`).join("")}</ul></div>
