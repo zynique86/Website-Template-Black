@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>本季主推 · ÉLAN 逸岚</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main>
+    <div class="container" style="padding-top:40px"><nav class="breadcrumb" aria-label="面包屑" style="margin:0"><a href="index.html">首页</a><span>/</span>本季主推</nav></div>
+    <section class="tight" style="padding-top:30px">
+      <div class="container edition">
+        <div class="edition-visual">
+          <span class="edition-no">N° 1368 / 2026</span>
+          <div data-bottle="square,#4a3a2c,#100c09"></div>
+        </div>
+        <div>
+          <span class="eyebrow">2026 秋冬 · 限量典藏</span>
+          <h1 class="section-title" style="font-size:clamp(44px,6vw,80px)">墨玉<em>沉香</em></h1>
+          <p class="section-lead">取自越南广南三十年老树的天然沉香，与意大利皮革和古老焚香交织，沉稳而深邃。每瓶均附调香师亲笔签名与独立编号。</p>
+          <div class="stock">
+            <div class="stock-row"><span>全球限量 2,026 瓶</span><span>已售 <b id="sold">1,368</b> 瓶</span></div>
+            <div class="stock-bar"><i style="width:67.5%"></i></div>
+          </div>
+          <div class="price" style="font-size:38px">¥2,380 <span style="font-family:var(--sans);font-size:13px;color:var(--muted)">/ 100ml</span></div>
+          <div class="buy-row">
+            <button class="btn btn-primary" data-add="oud">加入购物袋 <span class="arrow">→</span></button>
+            <a class="btn btn-ghost" href="product.html?id=oud">商品详情</a>
+          </div>
+          <ul class="assure"><li>手工雕刻黑色水晶瓶身</li><li>天然黄铜瓶盖，镀 18K 金</li><li>附赠皮质收藏盒与 5ml 随行装</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding-top:0">
+      <div class="container" style="text-align:center">
+        <div class="divider-ornate" aria-hidden="true"><svg><use href="#flourish"/></svg></div>
+        <span class="eyebrow eyebrow-center">Olfactory Pyramid</span>
+        <h2 class="section-title">香调<em>结构</em></h2>
+        <div class="pyramid">
+          <div class="tier reveal" style="--w:60%"><div><small>TOP</small><strong>前调</strong></div><p>粉红胡椒、藏红花。辛香明亮，开场即有张力。</p></div>
+          <div class="tier reveal d1" style="--w:80%"><div><small>HEART</small><strong>中调</strong></div><p>沉香木、保加利亚玫瑰。木质与花香交融，温暖饱满。</p></div>
+          <div class="tier reveal d2" style="--w:100%"><div><small>BASE</small><strong>后调</strong></div><p>皮革、焚香、琥珀。留香超过 12 小时，余韵绵长。</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container pull-quote">
+        <p class="reveal">“我想做一支像老宅书房的香水：安静、厚重，却让人想一直待下去。”</p>
+        <cite class="reveal d1">首席调香师 · Camille Moreau</cite>
+      </div>
+    </section>
+
+    <section style="padding-top:0">
+      <div class="container">
+        <div class="section-head" style="margin-bottom:50px"><div><span class="eyebrow">Pairs Well With</span><h2 class="section-title">搭配<em>推荐</em></h2></div><a href="collection.html" class="text-link">查看全部系列 →</a></div>
+        <div class="products" id="pairs"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/core.js"></script>
+  <script>
+    document.getElementById("pairs").innerHTML = ["bois", "ambrecandle", "vetiver", "giftset"].map((id) => productCard(findProduct(id))).join("");
+  </script>
+</body>
+</html>

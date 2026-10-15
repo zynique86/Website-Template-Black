@@ -2,10 +2,23 @@
 
 纯静态单页（HTML + CSS + 原生 JS），无需构建，直接双击 `index.html` 即可在浏览器打开。
 
-## 结构
-- `index.html`：页面结构（导航、首屏、产品、工艺、数据、主推、评价、订阅、页脚）
+## 页面
+| 文件 | 内容 |
+| --- | --- |
+| `index.html` | 首页 |
+| `collection.html` | 臻选系列：分类筛选与排序（支持 `?cat=fragrance`） |
+| `product.html` | 商品详情（`?id=ambre`） |
+| `craft.html` | 匠心工艺：品牌故事、历程、工序、原料 |
+| `spotlight.html` | 本季主推：限量款 |
+| `reviews.html` | 客户口碑：评分分布、筛选、写评价 |
+| `membership.html` | 会员礼遇：等级、权益对比、注册、常见问题 |
+| `search.html` | 搜索（`?q=玫瑰`） |
+| `cart.html` | 购物袋：数量、优惠码（ELAN10 / WELCOME）、包邮进度、结算 |
+
+## 资源
+- `assets/core.js`：全站共享。顶部 `PRODUCTS` 数组即商品数据；页头页脚、购物袋（保存在浏览器 localStorage）也在这里
+- `assets/home.js`：首页脚本
 - `assets/styles.css`：样式。顶部 `:root` 变量控制整体配色和字体
-- `assets/script.js`：顶部 `PRODUCTS` 数组即商品数据，改名称、价格、颜色、瓶型即可
 
 ## 配色
 | 用途 | 色值 |

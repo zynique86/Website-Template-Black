@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>商品详情 · ÉLAN 逸岚</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main>
+    <div class="container" style="padding-top:40px"><nav class="breadcrumb" aria-label="面包屑" style="margin:0"><a href="index.html">首页</a><span>/</span><a href="collection.html">臻选系列</a><span>/</span><em id="crumbName" style="font-style:normal">商品详情</em></nav></div>
+    <section class="tight" style="padding-top:60px">
+      <div class="container pdp" id="pdp"></div>
+    </section>
+    <section style="padding-top:0">
+      <div class="container">
+        <div class="divider-ornate" aria-hidden="true"><svg><use href="#flourish"/></svg></div>
+        <div class="section-head" style="margin-bottom:50px"><div><span class="eyebrow">You May Also Like</span><h2 class="section-title">你可能<em>还喜欢</em></h2></div></div>
+        <div class="products" id="related"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/core.js"></script>
+  <script>
+    const p = findProduct(qs("id")) || PRODUCTS[0];
+    document.title = `${p.name} · ÉLAN 逸岚`;
+    document.getElementById("crumbName").textContent = p.name;
+    let qty = 1;
+    const pdp = document.getElementById("pdp");
+    pdp.innerHTML = `
+      <div class="pdp-media" style="--glow:${p.c1}40">${bottle(p.shape, p.c1, p.c2)}</div>
+      <div class="pdp-info">
+        <div class="cat">${p.catLabel}${p.tag ? " · " + p.tag : ""}</div>
+        <h1>${p.name}</h1>
+        <div class="en">${p.en}</div>
+        <div class="pdp-meta"><span class="stars">★★★★★</span><span>${p.rating.toFixed(1)} 分</span><span>${p.reviews.toLocaleString("zh-CN")} 条评价</span><span>${p.size}</span></div>
+        <div class="price">${fmt(p.price)}${p.was ? `<s>${fmt(p.was)}</s>` : ""}</div>
+        <p class="story">${p.story}</p>
+        <dl class="notes">
+          <div><dt>前调</dt><dd>${p.notes[0]}</dd></div>
+          <div><dt>中调</dt><dd>${p.notes[1]}</dd></div>
+          <div><dt>后调</dt><dd>${p.notes[2]}</dd></div>
+        </dl>
+        <div class="buy-row">
+          <div class="qty"><button id="minus" aria-label="减少">−</button><span id="qty">1</span><button id="plus" aria-label="增加">+</button></div>
+          <button class="btn btn-ghost" id="addBtn" data-add="${p.id}" data-qty="1">加入购物袋</button>
+          <a class="btn btn-primary" href="cart.html" id="buyNow">立即购买 <span class="arrow">→</span></a>
+        </div>
+        <ul class="assure"><li>满 ¥1,000 顺丰包邮，48 小时内发货</li><li>免费礼盒包装与手写贺卡</li><li>未拆封商品 30 天无忧退换</li></ul>
+      </div>`;
+    const setQty = (n) => { qty = Math.max(1, Math.min(9, n)); document.getElementById("qty").textContent = qty; document.getElementById("addBtn").dataset.qty = qty; };
+    document.getElementById("minus").onclick = () => setQty(qty - 1);
+    document.getElementById("plus").onclick = () => setQty(qty + 1);
+    document.getElementById("buyNow").addEventListener("click", () => Cart.add(p.id, qty));
+    const related = PRODUCTS.filter((x) => x.id !== p.id && x.cat === p.cat).concat(PRODUCTS.filter((x) => x.cat !== p.cat)).slice(0, 4);
+    document.getElementById("related").innerHTML = related.map(productCard).join("");
+  </script>
+</body>
+</html>
