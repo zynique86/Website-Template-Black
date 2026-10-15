@@ -686,8 +686,8 @@ mark { background: none; color: var(--gold-light); border-bottom: 1px solid var(
 .slides { display: grid; }
 .slide {
   grid-area: 1 / 1; position: relative; overflow: hidden;
-  height: clamp(600px, calc(100vh - 130px), 860px);
-  display: flex; align-items: center; justify-content: center; padding: 24px 0 112px;
+  min-height: clamp(560px, calc(100vh - 130px), 860px);
+  display: flex; align-items: center; justify-content: center; padding: 32px 0 124px;
   opacity: 0; visibility: hidden; transition: opacity 1.2s var(--ease), visibility 0s linear 1.2s;
 }
 .slide.is-active { opacity: 1; visibility: visible; transition: opacity 1.2s var(--ease), visibility 0s; z-index: 1; }
@@ -704,7 +704,9 @@ mark { background: none; color: var(--gold-light); border-bottom: 1px solid var(
 
 .slide-inner { position: relative; z-index: 1; width: min(var(--max), 100% - 48px); margin-inline: auto; }
 .slide-inner.center { display: flex; flex-direction: column; align-items: center; text-align: center; }
-.slide-inner.center .hero-stage { margin: 16px 0 0; height: clamp(200px, min(30vw, 36vh), 380px); }
+.slide-inner.center .hero-stage { margin: 12px 0 0; height: clamp(160px, min(28vw, 32vh), 360px); max-width: min(900px, clamp(160px, min(28vw, 32vh), 360px) * 2.7); }
+.slide-inner.center h1 { font-size: clamp(32px, min(5.4vw, 8vh), 74px); }
+.bg-collection .hero-word { font-size: clamp(120px, min(26vw, 50vh), 420px); }
 .slide-inner.center h1 { margin: 18px 0 12px; }
 .slide-inner.center p { margin-bottom: 26px; }
 .split-slide { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
@@ -712,7 +714,7 @@ mark { background: none; color: var(--gold-light); border-bottom: 1px solid var(
 .slide-copy p, .slide-inner.center p { color: var(--muted); font-size: 16px; max-width: 480px; margin-bottom: 34px; }
 .slide-inner.center p { margin-inline: auto; }
 .split-slide .slide-copy p { margin: 0 0 34px; }
-.slide-title { font-family: var(--serif); font-weight: 300; font-size: clamp(48px, 7vw, 100px); line-height: 1.05; letter-spacing: 0.06em; margin: 18px 0 20px; }
+.slide-title { font-family: var(--serif); font-weight: 300; font-size: clamp(44px, min(7vw, 11vh), 100px); line-height: 1.05; letter-spacing: 0.06em; margin: 18px 0 20px; }
 .slide-title em { font-style: normal; background: linear-gradient(120deg, var(--gold-light), var(--gold-deep)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .slide-price { font-family: var(--serif); font-size: 34px; color: var(--gold-light); margin: -8px 0 30px; }
 .slide-price small { font-family: var(--sans); font-size: 13px; color: var(--muted); }
@@ -726,7 +728,7 @@ mark { background: none; color: var(--gold-light); border-bottom: 1px solid var(
 }
 .gift-box > div { width: 22%; filter: drop-shadow(0 16px 16px rgba(0, 0, 0, 0.7)); }
 .slide-bottle { width: min(250px, 30vh); filter: drop-shadow(0 40px 50px rgba(0, 0, 0, 0.8)); animation: float 7s ease-in-out infinite; }
-.slider-ui { position: relative; z-index: 2; display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; margin-top: -96px; padding-bottom: 32px; }
+.slider-ui { position: relative; z-index: 2; display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; margin-top: -100px; padding-bottom: 32px; }
 .slider-tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 200px)); gap: 20px; flex: 1; }
 .slider-tab { text-align: left; padding-top: 14px; font-size: 12px; letter-spacing: 0.15em; color: var(--muted); position: relative; transition: color 0.3s; }
 .slider-tab b { display: block; font-family: var(--serif); font-weight: 400; font-size: 14px; color: var(--gold); margin-bottom: 2px; }
@@ -742,7 +744,7 @@ mark { background: none; color: var(--gold-light); border-bottom: 1px solid var(
 .hero-slider + .hero-bar, .hero-slider .hero-bar { margin-top: 20px; }
 
 @media (max-width: 860px) {
-  .slide { height: auto; min-height: 0; padding: 30px 0 110px; }
+  .slide { min-height: 0; padding: 30px 0 118px; }
   .split-slide { grid-template-columns: 1fr; gap: 10px; text-align: center; }
   .split-slide .slide-copy, .split-slide.reverse .slide-copy { order: 2; }
   .split-slide .slide-copy p { margin: 0 auto 30px; }
