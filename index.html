@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ÉLAN 逸岚 · 高级香氛</title>
+  <meta name="description" content="ÉLAN 逸岚：源自格拉斯的高级香氛与居家香薰。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+
+  <div class="announce">全场满 ¥1,000 包邮 · 每笔订单附赠两支旅行装小样</div>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="#" class="logo">ÉL<span>A</span>N<small>逸岚</small></a>
+      <ul class="nav-links">
+        <li><a href="#collection">臻选系列</a></li>
+        <li><a href="#craft">匠心工艺</a></li>
+        <li><a href="#spotlight">本季主推</a></li>
+        <li><a href="#reviews">客户口碑</a></li>
+        <li><a href="#contact">会员礼遇</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="icon-btn" aria-label="搜索">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        </button>
+        <button class="icon-btn" aria-label="购物袋">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+          <span class="cart-count">0</span>
+        </button>
+        <button class="icon-btn menu-toggle" aria-label="菜单" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ Hero ============ -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow reveal">2026 秋冬 · 全新系列</span>
+          <h1 class="reveal d1">香气，是<br/><em>无声的</em>奢华</h1>
+          <p class="reveal d2">源自法国格拉斯的百年调香工艺，以珍稀原料与东方灵感，为你调制一缕专属的气质与记忆。</p>
+          <div class="hero-cta reveal d3">
+            <a href="#collection" class="btn btn-primary">探索系列 <span class="arrow">→</span></a>
+            <a href="#craft" class="btn btn-ghost">品牌故事</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-ring"></div>
+          <div class="hero-ring r2"></div>
+          <div class="hero-bottle" data-bottle="tall,#e2b06a,#6e4114"></div>
+          <div class="hero-badge reveal d2">
+            <strong>No.01</strong>
+            <span>琥珀夜曲 · 100ML</span>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-hint">SCROLL</div>
+    </section>
+
+    <!-- ============ 滚动品牌条 ============ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>GRASSE · FRANCE</span><span>HAND CRAFTED</span><span>RARE INGREDIENTS</span><span>SINCE 1926</span><span>VOGUE 年度香氛</span><span>ELLE 推荐</span>
+        <span>GRASSE · FRANCE</span><span>HAND CRAFTED</span><span>RARE INGREDIENTS</span><span>SINCE 1926</span><span>VOGUE 年度香氛</span><span>ELLE 推荐</span>
+      </div>
+    </div>
+
+    <!-- ============ 产品 ============ -->
+    <section id="collection">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow reveal">The Collection</span>
+            <h2 class="section-title reveal d1">臻选<em>系列</em></h2>
+            <p class="section-lead reveal d2">每一款都经过超过 300 次调配试验，只为找到那一刻恰到好处的平衡。</p>
+          </div>
+          <div class="filters reveal d2">
+            <button class="filter active" data-filter="all">全部</button>
+            <button class="filter" data-filter="fragrance">香水</button>
+            <button class="filter" data-filter="home">香薰蜡烛</button>
+            <button class="filter" data-filter="care">身体护理</button>
+          </div>
+        </div>
+        <div class="products" id="productGrid"></div>
+      </div>
+    </section>
+
+    <!-- ============ 工艺 ============ -->
+    <section class="craft" id="craft">
+      <div class="container craft-grid">
+        <div class="craft-visual reveal">
+          <div data-bottle="square,#5a4430,#16110c"></div>
+          <div class="year"><b>1926</b>始于格拉斯</div>
+        </div>
+        <div>
+          <span class="eyebrow reveal">Our Craft</span>
+          <h2 class="section-title reveal d1">百年匠心，<br/><em>一滴</em>成香</h2>
+          <p class="section-lead reveal d2">我们坚持手工萃取与小批量生产，每一瓶都由调香师亲自签名编号，确保你收到的是独一无二的作品。</p>
+          <div class="features">
+            <div class="feature reveal"><div class="num">01</div><h4>珍稀原料</h4><p>甄选全球 28 个产区的天然花材与木质香料。</p></div>
+            <div class="feature reveal d1"><div class="num">02</div><h4>手工调配</h4><p>大师级调香师主理，每批次不超过 500 瓶。</p></div>
+            <div class="feature reveal d2"><div class="num">03</div><h4>持久留香</h4><p>高浓度香精配比，留香时间可达 12 小时以上。</p></div>
+            <div class="feature reveal d3"><div class="num">04</div><h4>可持续包装</h4><p>可回收水晶玻璃瓶身，支持终身补充装服务。</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 数据 ============ -->
+    <div class="stats">
+      <div class="container stats-grid">
+        <div class="stat"><strong data-count="98">98</strong><span>年品牌传承</span></div>
+        <div class="stat"><strong data-count="120" data-suffix="万+">120万+</strong><span>全球会员</span></div>
+        <div class="stat"><strong data-count="36">36</strong><span>国家与地区</span></div>
+        <div class="stat"><strong data-count="99" data-suffix="%">99%</strong><span>好评率</span></div>
+      </div>
+    </div>
+
+    <!-- ============ 主推 ============ -->
+    <section id="spotlight">
+      <div class="container">
+        <div class="spotlight-card reveal">
+          <div class="spotlight-copy">
+            <span class="eyebrow">Limited Edition</span>
+            <h2 class="section-title">墨玉<em>沉香</em></h2>
+            <p class="section-lead">取自三十年老树的天然沉香，与意大利皮革和古老焚香交织，沉稳而深邃。全球限量 2026 瓶。</p>
+            <ul class="spotlight-list">
+              <li>前调：粉红胡椒、藏红花</li>
+              <li>中调：沉香木、保加利亚玫瑰</li>
+              <li>后调：皮革、焚香、琥珀</li>
+            </ul>
+            <div class="price">¥2,380</div>
+            <div class="hero-cta">
+              <button class="btn btn-primary" data-name="墨玉沉香">立即购买 <span class="arrow">→</span></button>
+              <a href="#collection" class="btn btn-ghost">查看全部</a>
+            </div>
+          </div>
+          <div class="spotlight-visual" data-bottle="square,#4a3a2c,#100c09"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 评价 ============ -->
+    <section id="reviews" style="padding-top: 0">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow reveal">Testimonials</span>
+            <h2 class="section-title reveal d1">他们<em>这样说</em></h2>
+          </div>
+        </div>
+        <div class="testimonials-grid">
+          <blockquote class="quote reveal">
+            <div class="stars">★★★★★</div>
+            <p>琥珀夜曲是我用过最有层次感的香水，从清晨到夜晚，每个阶段都有不同的惊喜。</p>
+            <footer><div class="avatar">林</div><div><strong>林小姐</strong><span>上海 · 品牌设计师</span></div></footer>
+          </blockquote>
+          <blockquote class="quote reveal d1">
+            <div class="stars">★★★★★</div>
+            <p>包装的仪式感太强了，打开盒子的那一刻就知道是用心之作。送礼再合适不过。</p>
+            <footer><div class="avatar">陈</div><div><strong>陈先生</strong><span>北京 · 企业主</span></div></footer>
+          </blockquote>
+          <blockquote class="quote reveal d2">
+            <div class="stars">★★★★★</div>
+            <p>松林篝火蜡烛让整个客厅都有了温度，朋友来家里都会问是什么味道。</p>
+            <footer><div class="avatar">周</div><div><strong>周女士</strong><span>杭州 · 生活方式博主</span></div></footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section class="cta" id="contact">
+      <div class="container">
+        <span class="eyebrow reveal">Join The Circle</span>
+        <h2 class="section-title reveal d1">成为<em>逸岚会员</em></h2>
+        <p class="section-lead reveal d2">订阅即享首单 9 折、新品优先试香与会员专属活动邀请。</p>
+        <form class="subscribe reveal d3">
+          <input type="email" required placeholder="输入你的邮箱地址" aria-label="邮箱地址" />
+          <button class="btn btn-primary" type="submit">立即订阅</button>
+        </form>
+        <div class="form-note" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- ============ 服务保障 ============ -->
+    <div class="perks">
+      <div class="container perks-grid">
+        <div class="perk"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 9h17v13H3zM20 13h5l4 4v5h-9"/><circle cx="9" cy="24" r="2.5"/><circle cx="24" cy="24" r="2.5"/></svg><div><strong>顺丰包邮</strong><span>满 ¥1,000 全国包邮</span></div></div>
+        <div class="perk"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M16 3 5 7v8c0 7 5 12 11 14 6-2 11-7 11-14V7L16 3Z"/><path d="m11 16 4 4 7-8"/></svg><div><strong>正品保证</strong><span>每瓶附专属防伪编号</span></div></div>
+        <div class="perk"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="4" y="12" width="24" height="16"/><path d="M2 8h28v4H2zM16 8v20M16 8c-3-5-9-4-8 0M16 8c3-5 9-4 8 0"/></svg><div><strong>精美礼盒</strong><span>免费礼品包装与贺卡</span></div></div>
+        <div class="perk"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M5 16a11 11 0 1 0 3-7.5"/><path d="M5 4v5h5"/></svg><div><strong>30 天无忧退换</strong><span>未拆封商品随时可退</span></div></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="#" class="logo">ÉL<span>A</span>N<small>逸岚</small></a>
+          <p>源自格拉斯的高级香氛品牌，以气味记录生活中每一个值得珍藏的瞬间。</p>
+          <div class="socials">
+            <a href="#" aria-label="微信">微</a><a href="#" aria-label="微博">博</a><a href="#" aria-label="小红书">红</a><a href="#" aria-label="抖音">抖</a>
+          </div>
+        </div>
+        <div><h5>选购</h5><ul><li><a href="#collection">香水</a></li><li><a href="#collection">香薰蜡烛</a></li><li><a href="#collection">身体护理</a></li><li><a href="#collection">礼盒套装</a></li></ul></div>
+        <div><h5>服务</h5><ul><li><a href="#">配送说明</a></li><li><a href="#">退换政策</a></li><li><a href="#">门店预约</a></li><li><a href="#">常见问题</a></li></ul></div>
+        <div><h5>联系我们</h5><ul><li>400-888-0000</li><li>service@elan.example</li><li>上海市静安区南京西路 1266 号</li></ul></div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year">2026</span> ÉLAN 逸岚. 保留所有权利。</span>
+        <span>隐私政策 · 使用条款</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" role="status"></div>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>
