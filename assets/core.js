@@ -217,13 +217,23 @@ function showToast(msg) {
 
 const qs = (k) => new URLSearchParams(location.search).get(k);
 
-function observeReveal(root = document) {
-  if (!("IntersectionObserver" in window)) { root.querySelectorAll(".reveal").forEach((el) => el.classList.add("in")); return; }
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
-  }, { threshold: 0.12 });
-  root.querySelectorAll(".reveal:not(.in)").forEach((el) => io.observe(el));
+// 渐显：按滚动位置判断，进入视口（或已滚过）就显示，不依赖 IntersectionObserver
+document.documentElement.classList.add("can-reveal");
+function revealCheck() {
+  const limit = window.innerHeight * 0.92;
+  document.querySelectorAll(".reveal:not(.in)").forEach((el) => {
+    if (el.getBoundingClientRect().top < limit) el.classList.add("in");
+  });
 }
+let revealTick = false;
+window.addEventListener("scroll", () => {
+  if (revealTick) return;
+  revealTick = true;
+  requestAnimationFrame(() => { revealTick = false; revealCheck(); });
+}, { passive: true });
+window.addEventListener("resize", revealCheck);
+window.addEventListener("load", revealCheck);
+function observeReveal() { revealCheck(); setTimeout(revealCheck, 60); }
 
 function fillBottles(root = document) {
   root.querySelectorAll("[data-bottle]").forEach((el) => {
@@ -308,4 +318,6 @@ function initSite() {
 
 initSite();
 // 页面脚本在 initSite 之后运行，最后统一启用渐显
-requestAnimationFrame(() => observeReveal());
+observeReveal();
+// 兜底：即使滚动事件没有触发，也定时检查一次
+setInterval(revealCheck, 400);
