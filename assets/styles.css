@@ -186,6 +186,22 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 @keyframes rise { from { opacity: 0; transform: translateY(30px); } }
 @keyframes float { 50% { transform: translateY(-14px); } }
 
+/* ---------- 分割线 ---------- */
+.divider-ornate { display: flex; justify-content: center; color: var(--gold); margin-bottom: 90px; }
+.divider-ornate svg {
+  width: min(600px, 100%); height: 40px;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 25%, #000 75%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 25%, #000 75%, transparent);
+}
+.divider-gem { display: flex; align-items: center; justify-content: center; gap: 14px; margin: 4px auto 26px; width: 220px; }
+.divider-gem::before, .divider-gem::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--gold)); }
+.divider-gem::after { transform: scaleX(-1); }
+.divider-gem span { width: 7px; height: 7px; background: var(--gold); transform: rotate(45deg); box-shadow: 0 0 0 4px var(--bg-soft), 0 0 0 5px rgba(201, 169, 110, 0.5); }
+.divider-gem.left { margin: 8px 0 22px; width: 180px; }
+.divider-gem.left::before { display: none; }
+.divider-gem.left span { box-shadow: 0 0 0 4px #17140f, 0 0 0 5px rgba(201, 169, 110, 0.5); }
+.footer .divider-ornate { margin-bottom: 70px; }
+
 /* ---------- 荣誉奖项条 ---------- */
 .honors {
   position: relative; padding: 56px 0 60px; border-block: 1px solid var(--line);
@@ -287,8 +303,8 @@ section { padding: 140px 0; scroll-margin-top: 100px; }
   border: 1px solid var(--line);
 }
 .spotlight-copy { padding: 80px 70px; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 1; }
-.spotlight-copy .price { font-size: 36px; margin: 10px 0 34px; }
-.spotlight-list { list-style: none; margin: 10px 0 40px; display: grid; gap: 12px; }
+.spotlight-copy .price { font-size: 36px; margin: 0 0 34px; }
+.spotlight-list { list-style: none; margin: 10px 0 30px; display: grid; gap: 12px; }
 .spotlight-list li { display: flex; gap: 14px; font-size: 15px; color: #cfc9bd; }
 .spotlight-list li::before { content: "✦"; color: var(--gold); font-size: 12px; margin-top: 4px; }
 .spotlight-visual { position: relative; display: grid; place-items: center; }
@@ -385,6 +401,7 @@ section { padding: 140px 0; scroll-margin-top: 100px; }
   .nav-links a { display: block; padding: 18px 24px; }
   .nav-links a::after { display: none; }
   .menu-toggle { display: block; }
+  .craft-grid, .spotlight-card { grid-template-columns: 1fr; }
   .spotlight-copy { padding: 60px 32px; }
   .hero-bar { grid-template-columns: repeat(2, 1fr); }
   .honors-grid { grid-template-columns: repeat(2, 1fr); row-gap: 28px; }
