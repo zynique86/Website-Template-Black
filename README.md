@@ -16,6 +16,7 @@
 | `cart.html` | 购物袋：数量、优惠码（ELAN10 / WELCOME）、包邮进度、结算 |
 
 ## 资源
+- `assets/details.js`：每个商品的详细介绍（香氛故事、香调层次、参数、使用方式、评价）
 - `assets/core.js`：全站共享。顶部 `PRODUCTS` 数组即商品数据；页头页脚、购物袋（保存在浏览器 localStorage）也在这里
 - `assets/home.js`：首页脚本
 - `assets/styles.css`：样式。顶部 `:root` 变量控制整体配色和字体

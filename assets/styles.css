@@ -784,3 +784,46 @@ section.light .steps li, section.light .tier-card { background: rgba(11, 11, 12,
 section.light .tier-card.featured { background: radial-gradient(80% 60% at 50% 0%, rgba(201, 169, 110, 0.18), transparent 70%), rgba(11, 11, 12, 0.45); }
 section.light .craft-visual { background: rgba(11, 11, 12, 0.35); }
 @media (max-width: 860px) { section.light { padding: 64px 0; margin: 24px auto; } }
+
+/* ---------- 商品详细介绍 ---------- */
+.pd-tabs { display: flex; justify-content: center; gap: clamp(18px, 4vw, 56px); flex-wrap: wrap; padding: 22px 0; margin-top: 30px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font-size: 13px; letter-spacing: 0.2em; color: var(--muted); }
+.pd-tabs a { position: relative; padding: 4px 0; transition: color 0.3s; }
+.pd-tabs a::after { content: ""; position: absolute; left: 50%; right: 50%; bottom: -2px; height: 1px; background: var(--gold); transition: all 0.3s; }
+.pd-tabs a:hover { color: var(--gold-light); }
+.pd-tabs a:hover::after { left: 0; right: 0; }
+.pd-sec { padding: 72px 0; }
+.pd-sec + .pd-sec { border-top: 1px solid rgba(255, 255, 255, 0.04); }
+.pd-head { text-align: center; margin-bottom: 44px; }
+.pd-head .divider-gem { margin-top: 18px; }
+.pd-story { display: grid; grid-template-columns: 1fr 1.1fr; gap: 80px; align-items: center; }
+.pd-quote blockquote { font-family: var(--serif); font-weight: 300; font-size: clamp(28px, 3vw, 40px); line-height: 1.5; letter-spacing: 0.04em; margin: 18px 0 22px; color: var(--ivory); }
+.pd-sign { font-family: var(--serif); font-style: italic; font-size: 16px; color: var(--gold); }
+.pd-sign::before { content: ""; display: inline-block; width: 36px; height: 1px; background: var(--gold); vertical-align: middle; margin-right: 14px; }
+.pd-text p { color: #cfc9bd; font-size: 15px; line-height: 2; }
+.pd-text p + p { margin-top: 18px; }
+.pd-layers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.pd-layer { position: relative; padding: 40px 32px 36px; border: 1px solid var(--line); background: linear-gradient(180deg, rgba(201, 169, 110, 0.06), transparent 60%), var(--bg-card); }
+.pd-layer .no { position: absolute; top: 22px; right: 26px; font-family: var(--serif); font-size: 44px; line-height: 1; color: rgba(201, 169, 110, 0.18); }
+.pd-layer .when { font-size: 11px; letter-spacing: 0.22em; color: var(--muted); }
+.pd-layer h3 { font-family: var(--serif); font-weight: 400; font-size: 28px; margin: 10px 0 6px; color: var(--gold-light); }
+.pd-layer .ing { font-size: 15px; color: var(--ivory); margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.pd-layer p { font-size: 14px; color: var(--muted); line-height: 1.85; }
+.pd-profile { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; }
+.pd-profile .section-title { margin: 10px 0 30px; }
+.meters { display: grid; gap: 22px; }
+.meter { display: grid; grid-template-columns: 56px 1fr 34px; align-items: center; gap: 18px; font-size: 13px; color: #d8d2c6; letter-spacing: 0.1em; }
+.meter .bar { height: 2px; background: rgba(255, 255, 255, 0.1); }
+.meter .bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--gold-deep), var(--gold-light)); }
+.meter b { font-weight: 400; font-size: 12px; color: var(--gold); text-align: right; }
+.spec-table { border-top: 1px solid var(--line); }
+.spec-table div { display: grid; grid-template-columns: 110px 1fr; gap: 20px; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+.spec-table dt { color: var(--gold); font-size: 12px; letter-spacing: 0.2em; padding-top: 2px; }
+.spec-table dd { color: #d8d2c6; }
+.steps.steps-3 { grid-template-columns: repeat(3, 1fr); margin-top: 0; }
+.pd-reviews { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.pd-reviews .quote p { font-size: 18px; }
+@media (max-width: 860px) {
+  .pd-story, .pd-profile, .pd-layers, .pd-reviews, .steps.steps-3 { grid-template-columns: 1fr; gap: 28px; }
+  .pd-sec { padding: 56px 0; }
+  .pd-tabs { gap: 14px 22px; font-size: 12px; letter-spacing: 0.12em; }
+}

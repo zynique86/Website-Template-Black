@@ -17,6 +17,27 @@
     <section class="tight" style="padding-top:60px">
       <div class="container pdp" id="pdp"></div>
     </section>
+    <div class="container"><nav class="pd-tabs" aria-label="商品介绍">
+      <a href="#d-story">香氛故事</a><a href="#d-notes">香调层次</a><a href="#d-profile">产品参数</a><a href="#d-ritual">使用方式</a><a href="#d-reviews">买家评价</a>
+    </nav></div>
+    <section class="pd-sec" id="d-story"><div class="container pd-story" id="pdStory"></div></section>
+    <section class="pd-sec" id="d-notes"><div class="container">
+      <div class="pd-head"><span class="eyebrow">The Composition</span><h2 class="section-title">香调<em>层次</em></h2><div class="divider-gem"><span></span></div></div>
+      <div class="pd-layers" id="pdLayers"></div>
+    </div></section>
+    <section class="pd-sec" id="d-profile"><div class="container pd-profile">
+      <div><span class="eyebrow">Character</span><h2 class="section-title">气味<em>性格</em></h2><div class="meters" id="pdMeters"></div></div>
+      <div><span class="eyebrow">Details</span><h2 class="section-title">产品<em>参数</em></h2><dl class="spec-table" id="pdSpecs"></dl></div>
+    </div></section>
+    <section class="pd-sec" id="d-ritual"><div class="container">
+      <div class="pd-head"><span class="eyebrow">The Ritual</span><h2 class="section-title">使用<em>方式</em></h2><div class="divider-gem"><span></span></div></div>
+      <ol class="steps steps-3" id="pdRitual"></ol>
+    </div></section>
+    <section class="pd-sec" id="d-reviews"><div class="container">
+      <div class="pd-head"><span class="eyebrow">Reviews</span><h2 class="section-title">买家<em>评价</em></h2><div class="divider-gem"><span></span></div></div>
+      <div class="pd-reviews" id="pdReviews"></div>
+      <div class="more-link"><a class="text-link" href="reviews.html">查看全部评价 →</a></div>
+    </div></section>
     <section style="padding-top:0">
       <div class="container">
         <div class="divider-ornate" aria-hidden="true"><svg><use href="#flourish"/></svg></div>
@@ -29,6 +50,7 @@
   <div id="site-footer"></div>
 
   <script src="assets/core.js"></script>
+  <script src="assets/details.js"></script>
   <script>
     const p = findProduct(qs("id")) || PRODUCTS[0];
     document.title = `${p.name} · ÉLAN 逸岚`;
@@ -60,6 +82,21 @@
     document.getElementById("minus").onclick = () => setQty(qty - 1);
     document.getElementById("plus").onclick = () => setQty(qty + 1);
     document.getElementById("buyNow").addEventListener("click", () => Cart.add(p.id, qty));
+    const d = DETAILS[p.id];
+    if (d) {
+      const names = STAGE_NAME[p.cat], times = STAGE_TIME[p.cat];
+      document.getElementById("pdStory").innerHTML = `
+        <div class="pd-quote"><span class="eyebrow">The Story</span><blockquote>${d.headline}</blockquote><div class="pd-sign">${d.perfumer}</div></div>
+        <div class="pd-text">${d.story.map((t) => `<p>${t}</p>`).join("")}</div>`;
+      document.getElementById("pdLayers").innerHTML = d.layers.map((t, k) => `
+        <article class="pd-layer"><span class="no">0${k + 1}</span><div class="when">${times[k]}</div><h3>${names[k]}</h3><div class="ing">${p.notes[k]}</div><p>${t}</p></article>`).join("");
+      document.getElementById("pdMeters").innerHTML = Object.entries(d.profile).map(([k, v]) => `
+        <div class="meter"><span>${k}</span><div class="bar"><i style="width:${v * 20}%"></i></div><b>${v}/5</b></div>`).join("");
+      document.getElementById("pdSpecs").innerHTML = d.specs.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join("");
+      document.getElementById("pdRitual").innerHTML = RITUAL[p.cat].map(([h, t]) => `<li><h4>${h}</h4><p>${t}</p></li>`).join("");
+      document.getElementById("pdReviews").innerHTML = d.reviews.map(([n, c, t]) => `
+        <blockquote class="quote"><div class="meta"><span class="stars">★★★★★</span><span class="verified">已验证购买</span></div><p>${t}</p><footer><div><strong>${n}</strong><span>${c}</span></div></footer></blockquote>`).join("");
+    }
     const related = PRODUCTS.filter((x) => x.id !== p.id && x.cat === p.cat).concat(PRODUCTS.filter((x) => x.cat !== p.cat)).slice(0, 4);
     document.getElementById("related").innerHTML = related.map(productCard).join("");
   </script>
