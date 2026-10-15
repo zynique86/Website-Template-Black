@@ -300,6 +300,17 @@ section { padding: 88px 0; scroll-margin-top: 100px; }
   background: linear-gradient(120deg, #1d1912, #0e0e10 60%);
   border: 1px solid var(--line);
 }
+/* 绕框流动的金光 */
+@property --spin { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+.spotlight-card::after, .spotlight-card .orbit-glow {
+  content: ""; position: absolute; inset: -1px; z-index: 2; pointer-events: none; padding: 1.5px;
+  background: conic-gradient(from var(--spin), transparent 0deg, transparent 250deg, rgba(201, 169, 110, 0.5) 300deg, #f6e3b4 350deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  animation: orbit 6s linear infinite;
+}
+.spotlight-card .orbit-glow { padding: 4px; filter: blur(6px); opacity: 0.8; }
+@keyframes orbit { to { --spin: 360deg; } }
 .spotlight-copy { padding: 80px 70px; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 1; }
 .spotlight-copy .price { font-size: 36px; margin: 0 0 34px; }
 .spotlight-list { list-style: none; margin: 10px 0 30px; display: grid; gap: 12px; }
@@ -827,3 +838,16 @@ section.light .craft-visual { background: rgba(11, 11, 12, 0.35); }
   .pd-sec { padding: 56px 0; }
   .pd-tabs { gap: 14px 22px; font-size: 12px; letter-spacing: 0.12em; }
 }
+
+/* ---------- 圆角 ---------- */
+:root { --r-lg: 18px; --r: 12px; --r-sm: 8px; }
+.spotlight-card, section.light, .rating-summary, .order-done, .gift-box { border-radius: var(--r-lg); }
+.spotlight-card::after, .spotlight-card .orbit-glow { border-radius: inherit; }
+section.light::after { border-radius: calc(var(--r-lg) - 8px); }
+.product, .quote, .pd-layer, .tier-card, .tier, .origin, .summary, .pdp-media, .craft-visual, .free-ship, .cart-thumb, .steps { border-radius: var(--r); }
+.product, .steps, .tier-card { overflow: hidden; }
+.craft-visual::before { border-radius: calc(var(--r) - 4px); }
+.btn, .arrow-btn, .qty, .coupon, .subscribe, .input, .textarea, .select, .toast { border-radius: var(--r-sm); }
+.coupon, .subscribe { overflow: hidden; }
+.filter, .chip, .helpful, .tag, .quote .product-tag { border-radius: 999px; }
+.craft-visual .year { border-radius: var(--r-sm) 0 var(--r) 0; }
