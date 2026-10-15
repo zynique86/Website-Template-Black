@@ -838,3 +838,16 @@ section.light .craft-visual { background: rgba(11, 11, 12, 0.35); }
   .pd-sec { padding: 56px 0; }
   .pd-tabs { gap: 14px 22px; font-size: 12px; letter-spacing: 0.12em; }
 }
+
+/* ---------- 圆角 ---------- */
+:root { --r-lg: 18px; --r: 12px; --r-sm: 8px; }
+.spotlight-card, section.light, .rating-summary, .order-done, .gift-box { border-radius: var(--r-lg); }
+.spotlight-card::after, .spotlight-card .orbit-glow { border-radius: inherit; }
+section.light::after { border-radius: calc(var(--r-lg) - 8px); }
+.product, .quote, .pd-layer, .tier-card, .tier, .origin, .summary, .pdp-media, .craft-visual, .free-ship, .cart-thumb, .steps { border-radius: var(--r); }
+.product, .steps, .tier-card { overflow: hidden; }
+.craft-visual::before { border-radius: calc(var(--r) - 4px); }
+.btn, .arrow-btn, .qty, .coupon, .subscribe, .input, .textarea, .select, .toast { border-radius: var(--r-sm); }
+.coupon, .subscribe { overflow: hidden; }
+.filter, .chip, .helpful, .tag, .quote .product-tag { border-radius: 999px; }
+.craft-visual .year { border-radius: var(--r-sm) 0 var(--r) 0; }
