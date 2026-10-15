@@ -316,6 +316,13 @@ function initSite() {
   window.addEventListener("storage", (e) => { if (e.key === CART_KEY) updateCartCount(); });
 }
 
+// 每次打开新页面都从顶部开始（预览窗口会保留上一页的滚动位置）
+if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+const toTop = () => { if (!location.hash) window.scrollTo(0, 0); };
+toTop();
+window.addEventListener("load", () => { toTop(); setTimeout(toTop, 50); });
+window.addEventListener("pageshow", toTop);
+
 initSite();
 // 页面脚本在 initSite 之后运行，最后统一启用渐显
 observeReveal();
